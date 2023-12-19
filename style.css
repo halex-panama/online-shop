@@ -1,0 +1,111 @@
+body {
+  font-family: Roboto, Arial;
+  color: rgb(33, 33, 33);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgb(19, 25, 33);
+  color: white;
+  padding: 0 1rem;
+}
+
+.header-link {
+  display: inline-block;
+  padding: .5rem;
+  border-radius: .25rem;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+.header-link:hover {
+  border: 1px solid;
+}
+
+.left-section img {
+  width: 6.25rem;
+}
+
+.middle-section {
+  flex: 1;
+  max-width: 50rem;
+  margin: 0 1rem;
+  display: flex;
+}
+
+.middle-section input {
+  flex: 1;
+  width: 0;
+  font-size: 1rem;
+  height: 2.375;
+  padding-left: 1rem;
+  border: none;
+  border-radius: .25rem 0 0 .25rem;
+}
+
+.middle-section button {
+  background-color: rgb(254, 189, 105);
+  border-radius: 0 .25rem .25rem 0;
+  border: none;
+  flex-shrink: 0;
+  height: 2.5rem;
+}
+
+.middle-section img {
+  height: 75%;
+}
+
+.right-section {
+  width: 10rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.order-link {
+  color: white;
+}
+
+.cart-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-link img {
+  height: 2.5rem;
+}
+
+.cart-quantity {
+  color: rgb(240, 136, 4);
+  font-size: 1rem;
+  font-weight: 700;
+
+  position: absolute;
+  top: .7rem;
+  left: 1.9rem;
+
+  width: 1.5rem;
+  text-align: center;
+}
