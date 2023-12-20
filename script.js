@@ -40,7 +40,7 @@ products.forEach((product) => {
       </select>
     </div>
 
-    <div class="added-to-cart">
+    <div class="added-to-cart added-to-cart-${product.id}">
       <img src="assets/checkmark.png">
       Added
     </div>
@@ -93,7 +93,14 @@ document.querySelectorAll('.add-to-cart-button')
       document.querySelector('.cart-quantity')
         .innerHTML = cartQuantity;
 
-      console.log(cart)
-
+        const addedMessage = document.querySelector(
+          `.added-to-cart-${productId}`
+        );
+  
+        addedMessage.classList.add('added-to-cart-visible');
+  
+        setTimeout(() => {
+          addedMessage.classList.remove('added-to-cart-visible');
+        }, 2000);
     });
   });

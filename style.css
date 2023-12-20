@@ -225,6 +225,10 @@ select:focus, input:focus {
   opacity: 0;
 }
 
+.added-to-cart-visible {
+  opacity: 1;
+}
+
 .added-to-cart img {
-  height: 1.5rem;
+  height: 1rem;
 }
