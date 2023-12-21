@@ -1,5 +1,5 @@
 import {products} from "./products.js";
-import {cart, addToCart} from "./cart.js";
+import {cart, addToCart, calculateCartQuantity} from "./cart.js";
 
 let productsHTML = '';
 
@@ -60,15 +60,13 @@ document.querySelector('.products-grid')
   .innerHTML = productsHTML;
 
 function updateCartQuantity() {
-  let cartQuantity = 0;
-
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  }); //adding quantity to the cart
+  const cartQuantity = calculateCartQuantity();
 
   document.querySelector('.cart-quantity')
     .innerHTML = cartQuantity;
 };
+
+updateCartQuantity()
 
 const addedMessageTimeouts = {}; // add timeout to added message
 

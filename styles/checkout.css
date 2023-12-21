@@ -181,3 +181,8 @@ main {
   border-radius: .5rem;
   margin: 1rem auto;
 }
+
+.quantity-input {
+  width: 2rem;
+  display: none;
+}
