@@ -1,0 +1,55 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0 1rem;
+  height: 3.75rem;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 67rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.left-section {
+  width: 10rem;
+}
+
+.left-section img {
+  width: 6.25rem;
+  margin-top: 1rem;
+}
+
+.middle-section {
+  flex: 1;
+  flex-shrink: 0;
+  text-align: center;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+}
+
+.return-to-home-link {
+  color: rgb(0, 113, 133);
+  font-size: 23px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.right-section {
+  text-align: right;
+  width: 9.5rem;
+}
