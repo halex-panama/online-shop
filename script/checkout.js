@@ -133,3 +133,16 @@ document.querySelectorAll('.delete-quantity-link')
 });
 
 updateCartQuantity();
+
+document.querySelectorAll('.update-quantity-link')
+  .forEach((link) => {
+  link.addEventListener('click', () => {
+    const {productId} = link.dataset;
+    
+    const container = document.querySelector(
+      `.cart-item-container-${productId}`
+      );
+
+    container.classList.add('is-editing-quantity')
+  });
+});
