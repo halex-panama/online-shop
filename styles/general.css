@@ -55,3 +55,12 @@ select:focus, input:focus {
   border-color: rgb(252, 210, 0);
   box-shadow: none;
 }
+
+.link-primary {
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+}
+
+.link-primary:hover {
+  color: rgb(196, 80, 0);
+}
