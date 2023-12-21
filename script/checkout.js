@@ -1,4 +1,4 @@
-import { cart } from "./cart.js";
+import {cart, removeFormCart} from "./cart.js";
 import {products} from "./products.js";
 
 let cartSummaryHTML = '';
@@ -11,7 +11,6 @@ cart.forEach((cartItem) => {
 
   // if the productId matching with product that we have in product.js, 
   // we save it to mathcingProduct variable
-
   products.forEach((product) => {
     if (product.id === productId) {
       matchingProduct = product;
@@ -43,7 +42,7 @@ cart.forEach((cartItem) => {
               Update
             </span>
 
-            <span class="delete-quantity-link link-primary">
+            <span class="delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
               Delete
             </span>
           </div>
@@ -94,3 +93,13 @@ cart.forEach((cartItem) => {
 
 document.querySelector('.order-summary')
   .innerHTML = cartSummaryHTML;
+
+
+//add data productId to delete button
+document.querySelectorAll('.delete-quantity-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    const {productId} = link.dataset;
+    
+    removeFormCart(productId);
+  })
+})
