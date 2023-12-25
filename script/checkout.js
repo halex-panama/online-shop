@@ -2,7 +2,9 @@ import {
   cart, 
   removeFormCart, 
   calculateCartQuantity, 
-  updateQuantity} 
+  updateQuantity,
+  updateDeliveryOption
+  } 
   from "./cart.js";
 
 import {products} from "./products.js";
@@ -31,22 +33,22 @@ cart.forEach((cartItem) => {
     }
   });
 
-const deliveryOptionId = cartItem.deliveryOptionId;
+  const deliveryOptionId = cartItem.deliveryOptionId;
 
-let deliveryOption;
+  let deliveryOption;
 
-deliveryOptions.forEach((option) => {
-  if (option.id === deliveryOptionId) {
-    deliveryOption = option
-  }
-});
+  deliveryOptions.forEach((option) => {
+    if (option.id === deliveryOptionId) {
+      deliveryOption = option
+    }
+  });
 
-const today = dayjs();
-const deliveryDate = today.add(
-  deliveryOption.deliveryDays,
-  'days'
-)
-const dateString = deliveryDate.format('dddd, MMMM D');
+  const today = dayjs();
+  const deliveryDate = today.add(
+    deliveryOption.deliveryDays,
+    'days'
+  )
+  const dateString = deliveryDate.format('dddd, MMMM D');
 
   cartSummaryHTML +=`
     <div class="cart-item-container 
@@ -120,7 +122,8 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
     html +=`
-      <div class="delivery-option">
+      <div class="delivery-option" data-product-id="${matchingProduct.id}"
+      data-delivery-option-id="${deliveryOption.id}">
         <input type="radio"
         ${isChecked ? 'checked' : ''} 
         class="delivery-option-input" 
@@ -141,6 +144,13 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
 document.querySelector('.order-summary')
   .innerHTML = cartSummaryHTML;
+
+function updateCartQuantity() {
+  const cartQuantity = calculateCartQuantity();
+
+  document.querySelector('.return-to-home-link')
+  .innerHTML = `${cartQuantity} items`;
+};
   
 //add data productId to delete button
 document.querySelectorAll('.delete-quantity-link')
@@ -158,14 +168,16 @@ document.querySelectorAll('.delete-quantity-link')
   });
 });
 
-function updateCartQuantity() {
-  const cartQuantity = calculateCartQuantity();
-
-  document.querySelector('.return-to-home-link')
-  .innerHTML = `${cartQuantity} items`;
-};
-
 updateCartQuantity();
+
+document.querySelectorAll('.delivery-option')
+  .forEach((element) => {
+    element.addEventListener('click', () => {
+      const {productId, deliveryOptionId} = element.dataset;
+      
+      updateDeliveryOption(productId, deliveryOptionId);
+    })
+  })
 
 document.querySelectorAll('.update-quantity-link')
   .forEach((link) => {
