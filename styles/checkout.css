@@ -223,6 +223,10 @@ main {
     height: 35px;
     margin-top: 5px;
   }
+
+  .middle-section {
+    margin-right: .5rem;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -258,12 +262,6 @@ main {
 
   .delivery-options {
     grid-column: 1 / 2 span;
-  }
-}
-
-@media (max-width: 575px) {
-  .middle-section {
-    margin-right: .5rem;
   }
 }
 
