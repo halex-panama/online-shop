@@ -1,4 +1,4 @@
-import {cart} from "../cart.js";
+import {cart, calculateCartQuantity} from "../cart.js";
 import {getProduct} from "../products.js";
 import {getDeliveryOption} from "../deliveryOptions.js";
 
@@ -24,7 +24,7 @@ export function renderPaymentSummary() {
     </div>
 
     <div class="payment-summary-row">
-      <div>Items (3):</div>
+      <div class=payment-summary-quantity></div>
       <div class="payment-summary-money">
       $${(Math.round(productPriceCents) / 100).toFixed(2)}
       </div>
@@ -65,4 +65,13 @@ export function renderPaymentSummary() {
 
   document.querySelector('.payment-summary')
     .innerHTML = paymentSummaryHTML;
+
+  function updateCartQuantity() {
+    const cartQuantity = calculateCartQuantity();
+
+    document.querySelector('.payment-summary-quantity')
+    .innerHTML = `Items (${cartQuantity}): `;
+  };
+
+  updateCartQuantity();
 }
