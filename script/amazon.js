@@ -1,5 +1,6 @@
 import {products} from "./products.js";
-import {cart, addToCart, calculateCartQuantity} from "./cart.js";
+import {addToCart} from "./cart.js";
+import {renderAmazonHeader} from "./amazonHeader.js";
 
 let productsHTML = '';
 
@@ -59,14 +60,7 @@ products.forEach((product) => {
 document.querySelector('.products-grid')
   .innerHTML = productsHTML;
 
-function updateCartQuantity() {
-  const cartQuantity = calculateCartQuantity();
-
-  document.querySelector('.cart-quantity')
-    .innerHTML = cartQuantity;
-};
-
-updateCartQuantity()
+renderAmazonHeader();
 
 const addedMessageTimeouts = {}; // add timeout to added message
 
@@ -95,9 +89,7 @@ document.querySelectorAll('.add-to-cart-button')
       const {productId} = button.dataset; // using product id to button
 
       addToCart(productId);
-
-      updateCartQuantity();
-
+      renderAmazonHeader();
       addedMessageText(productId);
     });
   });
